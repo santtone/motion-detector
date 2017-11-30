@@ -1,4 +1,3 @@
-/* tslint:disable */
 var DiffCamEngine = (function() {
 	var stream;					// stream obtained from webcam
 	var video;					// shows stream
