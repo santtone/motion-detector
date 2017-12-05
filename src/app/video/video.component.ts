@@ -1,4 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {MotionHandlerService} from '../motion/motion-handler.service';
+import {Motion} from '../motion/motion';
 
 declare var DiffCamEngine: any;
 
@@ -22,7 +24,7 @@ export class VideoComponent implements OnInit {
   @ViewChild('video') videoElement: ElementRef;
   @ViewChild('motionCanvas') motionCanvasElement: ElementRef;
 
-  constructor() {
+  constructor(private motionHandler: MotionHandlerService) {
     this.showVideo = false;
   }
 
@@ -43,13 +45,15 @@ export class VideoComponent implements OnInit {
       scoreThreshold: this.captureSettings.scoreThreshold,
       initSuccessCallback: this.onInitSuccess,
       initErrorCallback: this.onInitFail,
-      captureCallback: this.onCapture
+      captureCallback: (data) => {
+        this.onCapture(data);
+      }
     });
   }
 
   private onCapture(data) {
     if (data.hasMotion) {
-      console.log(data.score);
+      this.motionHandler.onMotionDetected(new Motion(data.score, data.imageData, new Date()));
     }
   }
 

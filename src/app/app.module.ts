@@ -1,9 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-
-import { AppComponent } from './app.component';
-import { VideoComponent } from './video/video.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {VideoComponent} from './video/video.component';
+import {MotionHandlerService} from './motion/motion-handler.service';
 
 
 @NgModule({
@@ -14,7 +13,8 @@ import { VideoComponent } from './video/video.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [MotionHandlerService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
