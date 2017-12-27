@@ -5,10 +5,12 @@ function handleAuthentication(req, res) {
     var authorizationHeader = req.headers['authorization'];
     if (!authorizationHeader) {
         res.sendStatus(404);
+        return;
     }
     var token = authorizationHeader.split(/\s+/).pop() || '';
     if (!token) {
         res.sendStatus(404);
+        return;
     }
     var auth = new Buffer(token, 'base64').toString();
     var parts = auth.split(/:/);
