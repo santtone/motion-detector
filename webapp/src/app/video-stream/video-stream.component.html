@@ -1,0 +1,31 @@
+<mat-sidenav-container fxFlexFill>
+  <mat-sidenav #settingsSidenav class="md-sidenav mat-elevation-z5"
+               position="end"
+               mode="side"
+               [opened]="settingsOpened">
+    <div class="md-sidenav-container">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button (click)="toggleSettings()">
+          <mat-icon>close</mat-icon>
+        </button>
+        Asetukset
+      </div>
+      <div class="md-sidenav-content">
+        Zoom
+        <mat-slider min="0.5" max="3" step="0.25" [value]="zoomLevel" (input)="zoomLevel = $event.value"></mat-slider>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <div fxFill class="md-video-stream-container" fxLayoutAlign="center center">
+    <img class="md-video-stream" [src]="videoUrl" [style.transform]="'scale(' + zoomLevel + ')'">
+  </div>
+
+</mat-sidenav-container>
+<button *ngIf="!settingsOpened" mat-fab color="primary" class="md-settings-toggle"
+        (click)="toggleSettings()">
+  <mat-icon>settings</mat-icon>
+</button>
+
+
+
