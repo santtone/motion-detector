@@ -1,0 +1,9 @@
+{
+  "watchFolderPath": "",
+  "googleApiConfig": {
+    "serviceAccountKeyPath": "C:/tmp/motion-detector/motion-detector-1de76abe12d7.json",
+    "scopes": "https://www.googleapis.com/auth/drive",
+    "driveFolderId": "1cnSgFlewdvvYVJ3x_vtdlP9c4ECox5Vv",
+    "imageMimeType": "image/jpeg"
+  }
+}
