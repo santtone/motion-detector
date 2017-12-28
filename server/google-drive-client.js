@@ -1,11 +1,11 @@
-var config = require('config');
-var google = require('googleapis');
-var fs = require('fs');
+const config = require('config');
+const google = require('googleapis');
+const fs = require('fs');
 
-var googleApiConfig = config.get('googleApiConfig');
-var key = require(googleApiConfig.get('serviceAccountKeyPath'));
+const googleApiConfig = config.get('googleApiConfig');
+const key = require(googleApiConfig.get('serviceAccountKeyPath'));
 
-var authClient = new google.auth.JWT(
+const authClient = new google.auth.JWT(
     key.client_email,
     null,
     key.private_key,
@@ -20,7 +20,7 @@ authClient.authorize(function (err, tokens) {
 });
 
 exports.listFiles = function () {
-    var drive = google.drive('v3');
+    const drive = google.drive('v3');
     drive.files.list({
         auth: authClient
     }, function (err) {
@@ -33,7 +33,7 @@ exports.listFiles = function () {
 };
 
 exports.saveFile = function () {
-    var drive = google.drive('v3');
+    const drive = google.drive('v3');
     drive.files.create({
         auth: authClient,
         resource: {

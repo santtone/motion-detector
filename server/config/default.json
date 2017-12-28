@@ -1,5 +1,7 @@
 {
-  "watchFolderPath": "",
+  "fileWatcherConfig":{
+    "targetPath":"C:/tmp/motion-detector/motion"
+  },
   "googleApiConfig": {
     "serviceAccountKeyPath": "C:/tmp/motion-detector/motion-detector-1de76abe12d7.json",
     "scopes": "https://www.googleapis.com/auth/drive",

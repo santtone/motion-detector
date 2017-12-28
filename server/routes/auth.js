@@ -1,21 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 function handleAuthentication(req, res) {
-    var authorizationHeader = req.headers['authorization'];
+    let authorizationHeader = req.headers['authorization'];
     if (!authorizationHeader) {
         res.sendStatus(404);
         return;
     }
-    var token = authorizationHeader.split(/\s+/).pop() || '';
+    let token = authorizationHeader.split(/\s+/).pop() || '';
     if (!token) {
         res.sendStatus(404);
         return;
     }
-    var auth = new Buffer(token, 'base64').toString();
-    var parts = auth.split(/:/);
-    var username = parts[0];
-    var password = parts[1];
+    const auth = new Buffer(token, 'base64').toString();
+    const parts = auth.split(/:/);
+    const username = parts[0];
+    const password = parts[1];
 
     if (username === 'admin' && password === 'password') {
         res.sendStatus(200);
