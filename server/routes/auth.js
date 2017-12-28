@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const userService = require('../services/user-service');
 
 function handleAuthentication(req, res) {
     let authorizationHeader = req.headers['authorization'];
@@ -17,7 +18,8 @@ function handleAuthentication(req, res) {
     const username = parts[0];
     const password = parts[1];
 
-    if (username === 'admin' && password === 'password') {
+    let user = userService.find(username, password);
+    if (user) {
         res.sendStatus(200);
     } else {
         res.sendStatus(401);

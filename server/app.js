@@ -1,14 +1,13 @@
 const express = require('express');
-
 const index = require('./routes/index');
 const auth = require('./routes/auth');
-const googleDriveClient = require('./google-drive-client');
+const fileWatcher = require('./file-watcher');
 
 const app = express();
 
 app.use('/api', index);
 app.use('/api', auth);
 
-googleDriveClient.listFiles();
+fileWatcher.start();
 
 module.exports = app;

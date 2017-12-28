@@ -1,4 +1,5 @@
 {
+  "userListPath": "C:/tmp/motion-detector/users.json",
   "fileWatcherConfig":{
     "targetPath":"C:/tmp/motion-detector/motion"
   },

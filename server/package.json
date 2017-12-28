@@ -9,6 +9,7 @@
     "config": "^1.29.0",
     "debug": "~2.6.9",
     "express": "~4.15.5",
-    "googleapis": "^23.0.0"
+    "googleapis": "^23.0.0",
+    "lodash": "^4.17.4"
   }
 }

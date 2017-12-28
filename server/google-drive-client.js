@@ -32,20 +32,24 @@ exports.listFiles = function () {
     });
 };
 
-exports.saveFile = function () {
+exports.saveFile = function (filePath, name, mimeType, onSuccess, onError) {
     const drive = google.drive('v3');
     drive.files.create({
         auth: authClient,
         resource: {
-            name: 'testimage.jpg',
-            mimeType: 'image/jpeg',
-            parents: [googleApiConfig.get('1cnSgFlewdvvYVJ3x_vtdlP9c4ECox5Vv')]
+            name: name,
+            mimeType: mimeType,
+            parents: [googleApiConfig.get('driveFolderId')]
         },
         media: {
-            mimeType: 'image/jpeg',
-            body: fs.createReadStream('test.jpg')
+            mimeType: mimeType,
+            body: fs.createReadStream(filePath)
         }
-    }, function (err) {
-        console.log(err);
+    }, function (err, response) {
+        if (err) {
+            onError(err);
+        } else {
+            onSuccess(response);
+        }
     });
 };
