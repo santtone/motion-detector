@@ -1,7 +1,8 @@
 {
   "userListPath": "C:/tmp/motion-detector/users.json",
-  "fileWatcherConfig":{
-    "targetPath":"C:/tmp/motion-detector/motion"
+  "sendDelay": 2000,
+  "fileWatcherConfig": {
+    "targetPath": "C:/tmp/motion-detector/motion"
   },
   "googleApiConfig": {
     "serviceAccountKeyPath": "C:/tmp/motion-detector/motion-detector-1de76abe12d7.json",

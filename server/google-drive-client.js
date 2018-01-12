@@ -1,6 +1,7 @@
 const config = require('config');
 const google = require('googleapis');
 const fs = require('fs');
+const logger = require('./logger');
 
 const googleApiConfig = config.get('googleApiConfig');
 const key = require(googleApiConfig.get('serviceAccountKeyPath'));
@@ -25,25 +26,25 @@ exports.listFiles = function () {
         auth: authClient
     }, function (err) {
         if (err) {
-            console.log('Google Api Authentication Failed. ' + err);
+            logger.error('Google Api Authentication Failed. ' + err)
         } else {
-            console.log('Google Api Authentication Succeeded');
+            logger.debug('Google Api Authentication Succeeded');
         }
     });
 };
 
-exports.saveFile = function (filePath, name, mimeType, onSuccess, onError) {
+exports.saveFile = function (file, onSuccess, onError) {
     const drive = google.drive('v3');
     drive.files.create({
         auth: authClient,
         resource: {
-            name: name,
-            mimeType: mimeType,
+            name: file.name,
+            mimeType: file.mimeType,
             parents: [googleApiConfig.get('driveFolderId')]
         },
         media: {
-            mimeType: mimeType,
-            body: fs.createReadStream(filePath)
+            mimeType: file.mimeType,
+            body: fs.createReadStream(file.path)
         }
     }, function (err, response) {
         if (err) {

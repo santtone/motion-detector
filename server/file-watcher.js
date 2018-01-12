@@ -2,6 +2,7 @@ const fs = require('fs');
 const config = require('config');
 const fileWatcherConfig = config.get('fileWatcherConfig');
 const fileHandler = require('./file-handler');
+const logger = require('./logger');
 
 const path = fileWatcherConfig.get('targetPath');
 
@@ -11,12 +12,12 @@ exports.start = function () {
                 const filePath = path + '/' + filename;
                 setTimeout(() => {
                     if (fs.existsSync(filePath)) {
-                        console.log('File ' + filename + ' created');
+                        logger.debug('File ' + filename + ' detected');
                         fileHandler.saveFileToGoogleDrive(filePath);
                     } else {
-                        console.log('File ' + filename + ' deleted')
+                        // logger.debug('File ' + filename + ' deleted')
                     }
-                });
+                }, 1000);
             }
         }
     );
