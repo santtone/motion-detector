@@ -13,7 +13,7 @@ exports.start = function () {
                 setTimeout(() => {
                     if (fs.existsSync(filePath)) {
                         logger.debug('File ' + filename + ' detected');
-                        fileHandler.saveFileToGoogleDrive(filePath);
+                        fileHandler.sendFileToGoogleDrive(filePath);
                     } else {
                         // logger.debug('File ' + filename + ' deleted')
                     }

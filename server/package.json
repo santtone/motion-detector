@@ -12,5 +12,8 @@
     "googleapis": "^23.0.0",
     "lodash": "^4.17.4",
     "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.3"
   }
 }

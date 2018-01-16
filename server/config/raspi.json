@@ -1,12 +1,12 @@
 {
-  "environment": "dev",
-  "userListPath": "C:/tmp/motion-detector/users.json",
+  "environment": "raspi",
+  "userListPath": "/mydev/motion/users.json",
   "sendDelay": 1000,
   "fileWatcherConfig": {
-    "targetPath": "C:/tmp/motion-detector/motion"
+    "targetPath": "/mydev/motion/capture"
   },
   "googleApiConfig": {
-    "serviceAccountKeyPath": "C:/tmp/motion-detector/motion-detector-1de76abe12d7.json",
+    "serviceAccountKeyPath": "/mydev/motion/motion-detector-1de76abe12d7.json",
     "scopes": "https://www.googleapis.com/auth/drive",
     "driveFolderId": "1cnSgFlewdvvYVJ3x_vtdlP9c4ECox5Vv",
     "imageMimeType": "image/jpeg"

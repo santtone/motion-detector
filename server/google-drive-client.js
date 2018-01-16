@@ -50,6 +50,7 @@ exports.saveFile = function (file, onSuccess, onError) {
         if (err) {
             onError(err);
         } else {
+            response.path = file.path;
             onSuccess(response);
         }
     });
